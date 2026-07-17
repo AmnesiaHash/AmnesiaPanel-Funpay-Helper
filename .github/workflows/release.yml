@@ -20,14 +20,33 @@ jobs:
           node-version: '22'
           cache: npm
 
-      - run: npm ci
-      - run: npm run dist
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ensure Electron binary
+        run: node scripts/install-electron.mjs
+
+      - name: Build Windows installer
+        run: npm run dist
+        env:
+          # Avoid interactive electron download prompts on CI
+          ELECTRON_GET_USE_PROXY: 'false'
 
       - name: Upload Setup to Release
         uses: softprops/action-gh-release@v2
         with:
           files: release/AmnesiaPanel-Setup-*.exe
+          name: AmnesiaPanel v${{ github.ref_name }}
+          body: |
+            ## AmnesiaPanel — FunPay Helper
+
+            Установщик Windows с актуальным функционалом (включая текст поддержки канала в шапке).
+
+            1. Скачайте `AmnesiaPanel-Setup-….exe`
+            2. Установите и введите FunPay Golden Key
+            3. Канал: https://t.me/AmnesiaPanel
           generate_release_notes: true
           draft: false
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
