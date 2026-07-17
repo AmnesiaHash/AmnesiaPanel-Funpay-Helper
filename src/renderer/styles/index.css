@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --text-primary: #f3f0ff;
+  --text-secondary: #a89ec9;
+  --bg-primary: #0f0a1a;
+  --bg-secondary: #1a1229;
+  --accent: #8b5cf6;
+  --accent-hover: #a78bfa;
+  --radius-lg: 16px;
+}
+
+.light {
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(139, 92, 246, 0.2);
+  --text-primary: #1a1229;
+  --text-secondary: #6b5f8a;
+  --bg-primary: #f5f0ff;
+  --bg-secondary: #ebe4ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border backdrop-blur-glass shadow-glass;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
+  .glass-input {
+    @apply w-full rounded-xl border px-4 py-3 outline-none transition-all duration-200;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    color: var(--text-primary);
+  }
+
+  .glass-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-medium transition-all duration-200;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-medium transition-all duration-200;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}

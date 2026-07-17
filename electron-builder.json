@@ -1,0 +1,47 @@
+{
+  "appId": "com.amnesia.panel",
+  "productName": "AmnesiaPanel",
+  "copyright": "Copyright © AmnesiaPanel",
+  "directories": {
+    "output": "release",
+    "buildResources": "build"
+  },
+  "files": [
+    "out/**/*",
+    "package.json",
+    "!**/.env",
+    "!**/.env.*",
+    "!**/*.db",
+    "!**/amnesia-panel.db",
+    "!**/*.log"
+  ],
+  "extraMetadata": {
+    "main": "out/main/index.js"
+  },
+  "asar": true,
+  "electronVersion": "35.7.5",
+  "electronDist": "node_modules/electron/dist",
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "build/icon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "allowElevation": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "AmnesiaPanel",
+    "uninstallDisplayName": "AmnesiaPanel",
+    "deleteAppDataOnUninstall": false,
+    "installerIcon": "build/icon.ico",
+    "uninstallerIcon": "build/icon.ico",
+    "artifactName": "${productName}-Setup-${version}.${ext}"
+  }
+}
