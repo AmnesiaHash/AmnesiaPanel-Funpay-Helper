@@ -32,9 +32,22 @@ export function Header() {
             {avatarLetter}
           </div>
         )}
-        <div>
-          <h1 className="text-lg font-bold">AmnesiaPanel</h1>
-          <p className="text-xs text-[var(--text-secondary)]">FunPay Management</p>
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <div>
+            <h1 className="text-lg font-bold">AmnesiaPanel</h1>
+            <p className="text-xs text-[var(--text-secondary)]">FunPay Management</p>
+          </div>
+          <p className="text-sm text-[var(--text-secondary)]">
+            Поддержите пжшка подписочкой на тг канал{' '}
+            <a
+              href="https://t.me/AmnesiaPanel"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-accent-light underline underline-offset-2 hover:text-accent"
+            >
+              https://t.me/AmnesiaPanel
+            </a>
+          </p>
         </div>
       </div>
 
